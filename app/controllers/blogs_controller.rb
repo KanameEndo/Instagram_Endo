@@ -1,6 +1,7 @@
 class BlogsController < ApplicationController
+  before_action :correct_user, only: [:edit, :destroy]
   def index
-    @blogs = current_user.blogs
+    @blogs = Blog.all
   end
 
   def new
@@ -32,6 +33,11 @@ class BlogsController < ApplicationController
 
   def edit
     @blog = Blog.find(params[:id])
+      if @blog.user == current_user
+      render “edit”
+      else
+      redirect_to blogs_path
+      end
   end
 
   def update
@@ -52,5 +58,12 @@ class BlogsController < ApplicationController
   private
   def blog_params
   params.require(:blog).permit(:title, :content, :user_id, :image, :image_cache)
+  end
+
+  def correct_user
+    @blog = current_user.blogs.find_by(id: params[:id])
+    unless @blog
+      redirect_back(fallback_location: root_path)
+    end
   end
 end
