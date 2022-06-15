@@ -1,3 +1,8 @@
 <h1><%= @user.name %>のページ</h1>
 <p>メールアドレス: <%= @user.email %></p>
+<% if @user.avatar? %>
+  <%= image_tag @user.avatar.url %>
+<% else %>
+  <%= image_tag ("noavatar.png") %>
+<% end %>
 <%= link_to "写真投稿一覧に入る", blogs_path %>
