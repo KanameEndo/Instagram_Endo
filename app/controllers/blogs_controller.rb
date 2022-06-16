@@ -2,6 +2,7 @@ class BlogsController < ApplicationController
   before_action :correct_user, only: [:edit, :destroy]
   def index
     @blogs = Blog.all
+    @blogs = Blog.all.order(created_at: :desc)
   end
 
   def new
@@ -33,15 +34,24 @@ class BlogsController < ApplicationController
 
   def edit
     @blog = Blog.find(params[:id])
-      if @blog.user == current_user
-      render “edit”
-      else
-      redirect_to blogs_path
-      end
+    uneless @blog.user == current_user
+    redirect_to blog_path
   end
 
   def update
     @blog = Blog.find(params[:id])
+    if @blog.user != current_user
+      redirect_to blog_path
+      else
+        if @blog.update(post_params)
+          redirect_to blog_path
+        else
+          render :edit
+      end
+    end
+  end
+
+  def edit
     if @blog.update(blog_params)
       redirect_to blogs_path, notice: "編集しました"
     else
@@ -50,9 +60,13 @@ class BlogsController < ApplicationController
   end
 
   def destroy
+    @blog = Blog.all
     @blog = Blog.find(params[:id])
-    @blog.destroy
-    redirect_to blogs_path, notice: "削除しました"
+    if @blog.user != current_user
+      redirect_to blog_path, notice: "削除しました"
+    else
+      @blog.destroy
+    end
   end
 
   private
@@ -67,3 +81,4 @@ class BlogsController < ApplicationController
     end
   end
 end
+

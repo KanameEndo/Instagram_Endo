@@ -15,15 +15,20 @@
 
   <tbody>
     <% @blogs.each do |blog| %>
-      <tr>
-        <td><%= blog.name %></td>
-        <td><%= blog.title %></td>
-        <td><%= blog.content %></td>
-        <td><%= image_tag blog.image.url if blog.image.present? %></td>
-        <td><%= link_to 'Show', blog %></td>
-        <td><%= link_to 'Edit', edit_blog_path(blog) %></td>
-        <td><%= link_to 'Destroy', blog, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+    <tr>
+      <td><%= blog.user.name %></td>
+      <td><%= blog.title %></td>
+      <td><%= blog.content %></td>
+      <td><%= image_tag blog.image.url if blog.image.present? %></td>
+      <% if blog.user == current_user %>
+        <td><%= link_to '確認', blog %></td>
+        <td><%= link_to "編集", edit_blog_path(blog) %></td>
+        <td><%= link_to "削除", blog_path(blog), method: :delete %></td>
+      <% else %>
+        <td></td>
+        <td></td>
+      <% end %>
+    </tr>
     <% end %>
   </tbody>
 </table>
