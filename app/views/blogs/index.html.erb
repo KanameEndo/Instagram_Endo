@@ -25,6 +25,7 @@
         <td><%= link_to "編集", edit_blog_path(blog) %></td>
         <td><%= link_to "削除", blog_path(blog), method: :delete %></td>
       <% else %>
+        <td><%= link_to '確認', blog %></td>
         <td></td>
         <td></td>
       <% end %>

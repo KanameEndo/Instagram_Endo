@@ -1,0 +1,7 @@
+<h1><%= current_user.name %>のお気に入り写真</h1>
+<% @favorite_blogs.each do |blog|%>
+<div>
+  <p><%=blog.title %></p>
+  <%= image_tag blog.image.url if blog.image.present? %>
+</div>
+<% end %>
