@@ -45,7 +45,7 @@ class BlogsController < ApplicationController
     if @blog.user != current_user
       redirect_to blog_path
       else
-        if @blog.update(post_params)
+        if @blog.update(blog_params)
           redirect_to blog_path
         else
           render :edit
