@@ -10,3 +10,7 @@ class User < ApplicationRecord
   validates :password, length: { minimum: 6 }
   mount_uploader :image, ImageUploader
 end
+
+
+# @user.blogs =>  [1, 2, 3, 4]
+# @user.blogs[2] =>  3

@@ -14,11 +14,11 @@ class BlogsController < ApplicationController
     if params[:back]
     render :new
     else
-    if @blog.save
-      redirect_to blogs_path, notice: "投稿しました！"
-      ContactMailer.contact_mail(@blog).deliver
-    else
-      render :new
+      if @blog.save
+        redirect_to blogs_path, notice: "投稿しました！"
+        ContactMailer.contact_mail(@blog).deliver
+      else
+        render :new
       end
     end
   end
@@ -35,8 +35,9 @@ class BlogsController < ApplicationController
 
   def edit
     @blog = Blog.find(params[:id])
-    uneless @blog.user == current_user
-    redirect_to blog_path
+    unless @blog.user == current_user
+      redirect_to blog_path
+    end
   end
 
   def update
@@ -49,14 +50,6 @@ class BlogsController < ApplicationController
         else
           render :edit
       end
-    end
-  end
-
-  def edit
-    if @blog.update(blog_params)
-      redirect_to blogs_path, notice: "編集しました"
-    else
-      render :edit
     end
   end
 
