@@ -14,10 +14,15 @@
  *= require_self
  */
 
-:root {}
 
 body {
+  margin: 0px;
   line-height: 1.7;
+}
+
+section {
+  width: 95%;
+  margin: auto;
 }
 
 h1,
@@ -37,12 +42,9 @@ a {
   border: rgb(129, 129, 129) solid;
   background-color: #fff;
   padding: 25px;
-  transition: all 0.35s ease;
 }
 
-.card-effect:hover {
-  transform: translateY(5px);
-}
+.card-effect:hover {}
 
 img {
   width: 100%;
@@ -57,4 +59,19 @@ img {
 
 .form-create {
   margin: 30px 0px 15px 0px;
+}
+
+.p_btn {
+  width: 100%;
+  margin-top: 20px;
+}
+
+.p_sub_links {
+  text-align: center;
+  margin: 15px;
+}
+
+.p_sub_links a {
+  margin: 15px;
+  text-decoration: underline;
 }

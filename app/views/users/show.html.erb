@@ -1,6 +1,28 @@
-<h1><%= @user.name %>のページ</h1>
-<p>メールアドレス: <%= @user.email %></p>
-<%= image_tag @user.image.url if @user.image.present?%>
-<%= link_to "写真投稿一覧に入る", blogs_path %>
-<p><%=link_to"お気に入り記事",favorites_user_path(@user) %></p>
-<%= link_to "プロフィールを編集する", edit_user_path %>
+<p id="notice"><%= notice %></p>
+
+<!--profile section -->
+<div class="hero vh-50 d-flex align-center" id="home">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-7 mx-auto text-center">
+        <h2><%= @user.name %>プロフィール</h2>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Profile detail -->
+<section id="pictures">
+  <div class=" row">
+      <div class="col-lg-6 mx-auto text-center">
+        <div class="picture mt-4 card-effect">
+          <%= image_tag @user.image.url if @user.image.present?%>
+        </div>
+        <div class="p_btn">
+          <button type="button" class="btn btn-outline-secondary"><%= link_to "プロフィールを編集する", edit_user_path %><i class="bi bi-pencil-fill"></i></button>
+        </div>
+        <div class="p_sub_links">
+          <p><%= link_to "みんなの写真一覧へ戻る", blogs_path %><%=link_to"私のお気に入り写真一覧",favorites_user_path(@user) %><p>
+      </div>
+  </div>
+</section>
