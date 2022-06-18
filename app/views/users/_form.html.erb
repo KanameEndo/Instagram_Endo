@@ -1,3 +1,33 @@
+<section id="account">
+  <div class=" row">
+    <% @blogs.each do |blog| %>
+      <div class="col-lg-4 col-sm-6">
+        <div class="picture mt-4 card-effect">
+          <h5><%= blog.title %></h5>
+          <p><%= image_tag blog.image.url if blog.image.present? %></p>
+          <p><%= blog.content %></p>
+          <p><%= blog.user.name %></p>
+          <table>
+            <tbody>
+              <tr>
+                <% if blog.user == current_user %>
+                  <td><%= link_to '確認', blog %></td>
+                  <td><%= link_to "編集", edit_blog_path(blog) %></td>
+                  <td><%= link_to "削除", blog_path(blog), method: :delete %></td>
+                <% else %>
+                  <td><%= link_to '確認', blog %></td>
+                  <td></td>
+                  <td></td>
+                <% end %>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</section>
+
 <%= form_with(model: user, local: true) do |form| %>
   <% if user.errors.any? %>
     <div id="error_explanation">

@@ -13,3 +13,48 @@
  *= require_tree .
  *= require_self
  */
+
+:root {}
+
+body {
+  line-height: 1.7;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 700;
+}
+
+a {
+  text-decoration: none;
+}
+
+.card-effect {
+  border: rgb(129, 129, 129) solid;
+  background-color: #fff;
+  padding: 25px;
+  transition: all 0.35s ease;
+}
+
+.card-effect:hover {
+  transform: translateY(5px);
+}
+
+img {
+  width: 100%;
+}
+
+.account {
+  font-size: 1.5rem;
+  color: rgb(129, 129, 129);
+  text-align: center;
+  margin: 30px;
+}
+
+.form-create {
+  margin: 30px 0px 15px 0px;
+}
