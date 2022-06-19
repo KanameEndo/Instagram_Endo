@@ -1,26 +1,33 @@
 <%= form_with(model:@blog, local: true, url: choose_new_or_edit) do |form|%>
-  <% if @blog.errors.any?%>
-    <div id="error_explanation">
-    <h2><%=@blog.errors.count %>件のエラーがあります</h2>
-    <ul>
-    <% @blog.errors.full_messages.each do |msg| %>
-      <li><%= msg %></li>
-    <% end %>
-    </ul>
+<section id="account class="bg-light">
+  <div class="container">
+    <div class="row">
+      <% if @blog.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@blog.errors.count, "error") %> prohibited this <%= @blog.name %> from being saved:</h2>
+          <ul>
+            <% @blog.errors.full_messages.each do |msg| %>
+              <li><%= msg %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+      <div class="col-md-5 mx-auto text-center">
+        <div class="user_name">
+          <%= form.label :title%>
+          <%= form.text_field :title%>
+        </div>
+        <div class="user_name">
+          <%= form.label :content%>
+          <%= form.text_field :content%>
+        </div>
+        <div class="field">
+          <%= form.label :image %>
+          <%= form.file_field :image %>
+        </div>
+        <%= form.submit "送信"%>
     </div>
-<% end%>
-  <div class="user_name">
-    <%= form.label :title%>
-    <%= form.text_field :title%>
   </div>
-  <div class="user_name">
-    <%= form.label :content%>
-    <%= form.text_field :content%>
-  </div>
-  <div class="field">
-    <%= form.label :image %>
-    <%= form.file_field :image %>
-  </div>
-    <%= form.submit "送信"%>
+</section>
 <% end %>
-<%= link_to "一覧画面にもどる", blogs_path %>
+

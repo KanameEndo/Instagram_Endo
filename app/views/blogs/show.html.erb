@@ -1,14 +1,36 @@
-<% unless @blog.user_id == current_user.id %>
-  <% if @favorite.present? %>
-    <%= link_to 'お気に入り解除する', favorite_path(id: @favorite.id), method: :delete, class: 'btn btn-danger' %>
-  <% else %>
-    <%= link_to 'お気に入りする', favorites_path(blog_id: @blog.id), method: :post, class: 'btn btn-primary' %>
-  <% end %>
-<% end %>
-<h1>詳細画面</h1>
-  <p>名前：<%= @blog.user.name %></p>
-  <p>タイトル:<%= @blog.title %></p>
-  <p>内容：<%= @blog.content %></p>
-  <p><strong>写真</strong><%= image_tag @blog.image.url if @blog.image.present? %></p>
-<%= link_to '一覧へ', blogs_path%>
-<%= link_to "プロフィールを編集する", edit_user_path %>
+<p id="notice"><%= notice %></p>
+
+<!--profile section -->
+<div class="hero vh-50 d-flex align-center" id="home">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-7 mx-auto text-center">
+        <% unless @blog.user_id == current_user.id %>
+        <% if @favorite.present? %>
+            <%= link_to 'お気に入り解除する', favorite_path(id: @favorite.id), method: :delete, class: 'btn btn-danger' %>
+          <% else %>
+            <%= link_to 'お気に入りする', favorites_path(blog_id: @blog.id), method: :post, class: 'btn btn-primary' %>
+        <% end %>
+      <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- show detail -->
+<h3 class="title">詳細</h3>
+<section id="pictures">
+  <div class=" row">
+    <div class="col-lg-6 mx-auto text-center">
+      <div class="picture mt-4 card-effect">
+        <p>名前：<%= @blog.user.name %></p>
+        <p>タイトル:<%= @blog.title %></p>
+        <p>内容：<%= @blog.content %></p>
+        <%= image_tag @blog.image.url if @blog.image.present? %>
+      </div>
+      <div class="p_btn">
+        <button type="button" class="btn btn-outline-secondary"><%= link_to "みんなの写真一覧へ戻る", blogs_path %></button>
+      </div>
+    </div>
+  </div>
+</section>

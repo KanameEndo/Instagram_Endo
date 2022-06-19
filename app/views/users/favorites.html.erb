@@ -24,15 +24,23 @@
           <p><%= image_tag blog.image.url if blog.image.present? %></p>
           <p><%= blog.content %></p>
           <p><%= blog.user.name %></p>
+          <table>
+            <tbody>
+              <tr>
+                <% if blog.user == current_user %>
+                  <td><%= link_to '確認', blog %></td>
+                  <td><%= link_to "編集", edit_blog_path(blog) %></td>
+                  <td><%= link_to "削除", blog_path(blog), method: :delete %></td>
+                <% else %>
+                  <td><%= link_to '確認', blog %></td>
+                  <td></td>
+                  <td></td>
+                <% end %>
+              </tr>
+            </tbody>
+          </table>
         </div>
       </div>
     <% end %>
   </div>
 </section>
-
-
-
-<%# <% @favorite_blogs.each do |blog|%>
-<%# <div>
-  <><%=blog.title %>
-  <%# <%= image_tag blog.image.url if blog.image.present? %>

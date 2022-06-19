@@ -14,10 +14,22 @@
  *= require_self
  */
 
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300;400;500;700;900&family=Sora:wght@400;700&display=swap");
+
+:root {
+  --primary: #0d6efd;
+  --dark: #21252f;
+  --body: #888;
+}
 
 body {
   margin: 0px;
   line-height: 1.7;
+}
+
+a {
+  color: var(--dark);
+  text-decoration: none;
 }
 
 section {
@@ -32,6 +44,7 @@ h4,
 h5,
 h6 {
   font-weight: 700;
+  text-align: center;
 }
 
 a {
@@ -43,8 +56,6 @@ a {
   background-color: #fff;
   padding: 25px;
 }
-
-.card-effect:hover {}
 
 img {
   width: 100%;
@@ -74,4 +85,24 @@ img {
 .p_sub_links a {
   margin: 15px;
   text-decoration: underline;
+}
+
+.title {
+  margin-top: 30px;
+}
+
+.footer-top {
+  text-align: center;
+  color: black;
+  margin-top: 30px;
+  padding-bottom: 0px;
+  padding: 10px;
+  background-color: rgb(219, 219, 219);
+}
+
+#notice {
+  text-align: center;
+  color: #00687d;
+  font-size: 1rem;
+  margin-top: 20px;
 }

@@ -29,7 +29,7 @@
                 <% if blog.user == current_user %>
                   <td><%= link_to '確認', blog %></td>
                   <td><%= link_to "編集", edit_blog_path(blog) %></td>
-                  <td><%= link_to "削除", blog_path(blog), method: :delete %></td>
+                  <td><%= link_to "削除", blog_path(blog),method: :delete, data:{confirm:'本当に削除してよいですか？'}%></td>
                 <% else %>
                   <td><%= link_to '確認', blog %></td>
                   <td></td>

@@ -1,11 +1,19 @@
 <h3>以下の内容で、投稿する。</h3>
-<%= form_with(model: @blog, local: true) do |form| %>
-  <%= form.hidden_field :title %>
-  <%= form.hidden_field :content %>
-  <p>タイトル:<%= @blog.title %></p>
-  <p>本文:<%= @blog.content %></p>
-  <p>写真:<%= image_tag(@blog.image.url) if @blog.image && @blog.image.url %>
-  <%= form.hidden_field :image_cache %></p>
-  <%= form.submit  "登録する" %>
-  <%= form.submit "戻る", name: 'back'%>
-<% end %>
+<section id="pictures">
+  <div class=" row">
+    <div class="col-lg-6 mx-auto text-center">
+      <div class="picture mt-4 card-effect">
+        <%= form_with(model: @blog, local: true) do |form| %>
+          <%= form.hidden_field :title %>
+          <%= form.hidden_field :content %>
+          <p>タイトル:<%= @blog.title %></p>
+          <p>本文:<%= @blog.content %></p>
+          <%= image_tag(@blog.image.url) if @blog.image && @blog.image.url %>
+          <%= form.hidden_field :image_cache %></p>
+          <%= form.submit  "登録する" %>
+          <%= form.submit "戻る", name: 'back'%>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</section>
